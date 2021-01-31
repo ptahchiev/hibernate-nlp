@@ -1,4 +1,5 @@
-== Reproduce
+Reproduce
+===========
 To reproduce the issue simply run `mvn spring-boot:run`.
 One of the time it will blow with this error:
 ```
