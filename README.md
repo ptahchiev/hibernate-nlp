@@ -28,3 +28,15 @@ java.lang.NullPointerException: null
 	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:50) ~[hibernate-core-5.4.27.Final.jar:5.4.27.Final]
 
 ```
+
+*Please notice that it works fine (although a lot slower) if I comment out the `taskExecutor` reference in the step, like this:*
+
+```
+        return stepBuilders.get("search-export").<ProductEntity, Map<String, Object>>chunk(200)
+                        .reader(productReader)
+                        .processor(processor)
+                        .writer(writer)
+                        .transactionAttribute(transactionAttribute)
+                        //.taskExecutor(searchExportTaskExecutor).throttleLimit(4)
+                        .build();
+```
